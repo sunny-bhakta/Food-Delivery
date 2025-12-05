@@ -1,0 +1,44 @@
+version: "3.9" 
+services: 
+  api-gateway: 
+    build: ../../apps/api-gateway 
+    ports: 
+      - "3000:3000"  
+    depends_on: 
+      - catalog-service 
+      - dispatch-service 
+      - auth-service 
+  catalog-service: 
+    build: ../../services/node/catalog-service 
+    environment: 
+      - PORT=4001 
+    ports: 
+      - "4001:4001"  
+  dispatch-service: 
+    build: ../../services/node/dispatch-service 
+    environment: 
+      - PORT=4002 
+    ports: 
+      - "4002:4002"  
+  notifications-service: 
+    build: ../../services/node/notifications-service 
+    ports: 
+      - "4003:4003"  
+  auth-service: 
+    build: ../../services/node/auth-service 
+    environment:
+      - PORT=5001
+    ports: 
+      - "5001:5001"  
+  payments-service: 
+    build: ../../services/python/payments-service 
+    ports: 
+      - "5002:5002"  
+  mongo: 
+    image: mongo:6 
+    ports: 
+      - "27017:27017"  
+  redis: 
+    image: redis:7 
+    ports: 
+      - "6379:6379" 

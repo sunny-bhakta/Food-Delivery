@@ -1,0 +1,46 @@
+### Signup
+POST http://localhost:5001/auth/signup
+Content-Type: application/json
+
+{
+  "email": "alice@example.com",
+  "password": "StrongPass1",
+  "displayName": "Alice"
+}
+
+### Login
+POST http://localhost:5001/auth/login
+Content-Type: application/json
+
+{
+  "email": "alice@example.com",
+  "password": "StrongPass1"
+}
+
+
+### Validate token
+POST http://localhost:5001/auth/validate
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZGI4NDVlOC1mMWQwLTRkYjctYWQ1Mi1jYTZhODY0MjAyOTgiLCJlbWFpbCI6ImFsaWNlQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY0OTI4NDY3LCJleHAiOjE3NjUwMTEyNjcsImlzcyI6ImF1dGgtc2VydmljZSJ9.58jrs6l2urNTm9Hi8wtLdfu6FpsdpM7Q4eRoKGPWrNs"
+}
+
+# POST http://localhost:5001/auth/validate
+# Content-Type: application/json
+
+# {
+#   "token": "YOUR_ACCESS_TOKEN_HERE"
+# }
+
+# # {% client.global.set("authToken", response.body.accessToken); %} 
+# # After running the login request, manually copy the accessToken from the response and paste it below:
+# # Replace YOUR_ACCESS_TOKEN_HERE with the actual token value.
+
+# ### Validate token
+# POST http://localhost:5001/auth/validate
+# Content-Type: application/json
+
+# {
+#   "token": "{{response.body.accessToken}}"
+# }
